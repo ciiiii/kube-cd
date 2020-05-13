@@ -45,6 +45,9 @@ controller:
   metrics:
     port: 10254
     enabled: false
+  
+  admissionWebhooks:
+    enabled: false
 
 defaultBackend:
   enabled: true
