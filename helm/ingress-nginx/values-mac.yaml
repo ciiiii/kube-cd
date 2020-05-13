@@ -1,0 +1,64 @@
+controller:
+
+  image:
+    repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/kubernetes-ingress-controller.nginx-ingress-controller
+    tag: "0.32.0"
+    pullPolicy: IfNotPresent
+    runAsUser: 101
+    allowPrivilegeEscalation: true
+
+  replicaCount: 1
+  minAvailable: 1
+
+  resources:
+    limits:
+      cpu: 200m
+      memory: 180Mi
+    requests:
+      cpu: 100m
+      memory: 90Mi
+
+  service:
+    enabled: true
+    annotations: {}
+    labels: {}
+    externalIPs: []
+    loadBalancerSourceRanges: []
+    enableHttp: true
+    enableHttps: true
+
+    ports:
+      http: 80
+      https: 443
+
+    targetPorts:
+      http: http
+      https: https
+    type: NodePort
+
+    nodePorts:
+      http: 32080
+      https: 32443
+      tcp: {}
+      udp: {}
+
+  metrics:
+    port: 10254
+    enabled: false
+
+defaultBackend:
+  enabled: true
+
+  image:
+    repository: registry.cn-shanghai.aliyuncs.com/gcr_mirror_image/defaultbackend-amd64
+    tag: "1.5"
+    pullPolicy: IfNotPresent
+    runAsUser: 65534
+
+  resources: 
+    limits:
+      cpu: 10m
+      memory: 20Mi
+    requests:
+      cpu: 10m
+      memory: 20Mi
