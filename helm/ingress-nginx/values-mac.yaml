@@ -7,9 +7,11 @@ controller:
     runAsUser: 101
     allowPrivilegeEscalation: true
 
+  kind: DaemonSet
   hostNetwork: true
-  replicaCount: 1
-  minAvailable: 1
+
+  daemonset:
+    useHostPort: true
 
   resources:
     limits:
