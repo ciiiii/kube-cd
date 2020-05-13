@@ -22,7 +22,17 @@ controller:
       memory: 90Mi
 
   service:
-    enabled: false
+    enabled: true
+
+    ports:
+      http: 80
+      https: 443
+
+    targetPorts:
+      http: http
+      https: https
+
+    type: ClusterIP
 
   admissionWebhooks:
     enabled: false
