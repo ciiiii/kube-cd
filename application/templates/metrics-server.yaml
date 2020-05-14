@@ -16,14 +16,9 @@ spec:
   
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: metrics-server
+    namespace: kube-system
 
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
----
-apiVersion: v1
-kind: Namespace
-metadata:
-    name: metrics-server
