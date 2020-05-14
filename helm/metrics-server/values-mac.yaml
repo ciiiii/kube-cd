@@ -1,0 +1,14 @@
+image:
+  registry: registry.cn-shanghai.aliyuncs.com
+  repository: docker_mirror_image/bitnami.metrics-server
+  tag: 0.3.7-debian-10-r5
+  pullPolicy: IfNotPresent
+
+extraArgs:
+  - --kubelet-preferred-address-types=InternalIP
+  - --kubelet-insecure-tls
+  - --metric-resolution=60s
+
+resources:
+  limits: {}
+  requests: {}
