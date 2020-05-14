@@ -49,7 +49,7 @@ livenessProbe:
 # schedulerName: "default-scheduler"
 
 image:
-  repository: grafana/grafana
+  repository: registry.cn-shanghai.aliyuncs.com/docker_mirror_image/grafana.grafana
   tag: 6.7.3
   pullPolicy: IfNotPresent
 
@@ -61,11 +61,7 @@ image:
   #   - myRegistrKeySecretName
 
 testFramework:
-  enabled: true
-  image: "bats/bats"
-  tag: "v1.1.0"
-  imagePullPolicy: IfNotPresent
-  securityContext: {}
+  enabled: false
 
 securityContext:
   runAsUser: 472
@@ -89,7 +85,7 @@ extraEmptyDirMounts: []
 # priorityClassName:
 
 downloadDashboardsImage:
-  repository: curlimages/curl
+  repository: registry.cn-shanghai.aliyuncs.com/docker_mirror_image/curlimages.curl
   tag: 7.68.0
   pullPolicy: IfNotPresent
 
@@ -173,22 +169,6 @@ affinity: {}
 
 extraInitContainers: []
 
-## Enable an Specify container in extraContainers. This is meant to allow adding an authentication proxy to a grafana pod
-extraContainers: |
-# - name: proxy
-#   image: quay.io/gambol99/keycloak-proxy:latest
-#   args:
-#   - -provider=github
-#   - -client-id=
-#   - -client-secret=
-#   - -github-org=<ORG_NAME>
-#   - -email-domain=*
-#   - -cookie-secret=
-#   - -http-address=http://0.0.0.0:4181
-#   - -upstream-url=http://127.0.0.1:3000
-#   ports:
-#     - name: proxy-web
-#       containerPort: 4181
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
@@ -215,7 +195,7 @@ initChownData:
   ## initChownData container image
   ##
   image:
-    repository: busybox
+    repository: registry.cn-shanghai.aliyuncs.com/docker_mirror_image/library.busybox
     tag: "1.31.1"
     pullPolicy: IfNotPresent
 
@@ -455,7 +435,7 @@ smtp:
 ## Sidecars that collect the configmaps with specified label and stores the included files them into the respective folders
 ## Requires at least Grafana 5 to work and can't be used together with parameters dashboardProviders, datasources and dashboards
 sidecar:
-  image: kiwigrid/k8s-sidecar:0.1.99
+  image: registry.cn-shanghai.aliyuncs.com/docker_mirror_image/kiwigrid.k8s-sidecar:0.1.99
   imagePullPolicy: IfNotPresent
   resources: {}
 #   limits:
