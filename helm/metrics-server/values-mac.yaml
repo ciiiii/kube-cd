@@ -5,9 +5,9 @@ image:
   pullPolicy: IfNotPresent
 
 extraArgs:
-  - --kubelet-preferred-address-types=InternalIP
-  - --kubelet-insecure-tls
-  - --metric-resolution=60s
+  kubelet-preferred-address-types: "InternalIP"
+  kubelet-insecure-tls: "true"
+  metric-resolution: "60s"
 
 resources:
   limits: {}
