@@ -33,7 +33,7 @@ image:
   pullPolicy: IfNotPresent
   repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/jetstack.cert-manager-controller
 ingressShim: {}
-installCRDs: false
+installCRDs: true
 nodeSelector: {}
 podLabels: {}
 prometheus:
