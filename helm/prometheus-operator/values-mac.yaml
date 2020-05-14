@@ -1027,7 +1027,7 @@ prometheusOperator:
   manageCrds: true
 
   tlsProxy:
-    enabled: true
+    enabled: false
     image:
       repository: registry.cn-shanghai.aliyuncs.com/docker_mirror_image/squareup.ghostunnel
       tag: v1.5.2
