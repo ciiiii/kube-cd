@@ -5,7 +5,7 @@ cainjector:
   extraArgs: []
   image:
     pullPolicy: IfNotPresent
-    repository: registry.cn-shanghai.aliyuncs.com/gcr_mirror_image/jetstack.cert-manager-cainjector
+    repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/jetstack.cert-manager-cainjector
   nodeSelector: {}
   replicaCount: 1
   resources: {}
@@ -31,7 +31,7 @@ global:
     create: true
 image:
   pullPolicy: IfNotPresent
-  repository: registry.cn-shanghai.aliyuncs.com/gcr_mirror_image/jetstack.cert-manager-controller
+  repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/jetstack.cert-manager-controller
 ingressShim: {}
 installCRDs: false
 nodeSelector: {}
@@ -60,7 +60,7 @@ webhook:
   extraArgs: []
   image:
     pullPolicy: IfNotPresent
-    repository: registry.cn-shanghai.aliyuncs.com/gcr_mirror_image/jetstack.cert-manager-webhook
+    repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/jetstack.cert-manager-webhook
   nodeSelector: {}
   replicaCount: 1
   resources: {}
