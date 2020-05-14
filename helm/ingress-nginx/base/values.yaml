@@ -1,0 +1,24 @@
+controller:
+  repository: quay.azk8s.cn/kubernetes-ingress-controller/nginx-ingress-controller
+  hostNetwork: true
+  dnsPolicy: ClusterFirstWithHostNet
+  reportNodeInternalIp: true
+  daemonset:
+    useHostPort: true
+  extraArgs:
+    v: 2
+  kind: DaemonSet
+  resources:
+  #  limits:
+  #    cpu: 100m
+  #    memory: 64Mi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+  service:
+    enabled: false
+  metrics:
+    enabled: true
+defaultBackend:
+  image:
+    repository: gcr.azk8s.cn/google_containers/defaultbackend-amd64

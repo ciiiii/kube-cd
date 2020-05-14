@@ -3,12 +3,14 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   labels:
-    {{- include "ingress-nginx.labels" . | nindent 4 }}
-    app.kubernetes.io/component: default-backend
-  name: {{ include "ingress-nginx.fullname" . }}-backend
+    app: {{ template "nginx-ingress.name" . }}
+    chart: {{ template "nginx-ingress.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: {{ template "nginx-ingress.fullname" . }}-backend
 rules:
-  - apiGroups:      [{{ template "podSecurityPolicy.apiGroup" . }}]
+  - apiGroups:      ['{{ template "podSecurityPolicy.apiGroup" . }}']
     resources:      ['podsecuritypolicies']
     verbs:          ['use']
-    resourceNames:  [{{ include "ingress-nginx.fullname" . }}-backend]
-{{- end }}
+    resourceNames:  [{{ template "nginx-ingress.fullname" . }}-backend]
+{{- end -}}

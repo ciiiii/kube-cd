@@ -1,7 +1,7 @@
 apiVersion: v1
-appVersion: 0.32.0
-description: Ingress controller for Kubernetes using NGINX as a reverse proxy and
-  load balancer
+appVersion: 0.26.1
+description: An nginx Ingress controller that uses ConfigMap to store the nginx configuration.
+engine: gotpl
 home: https://github.com/kubernetes/ingress-nginx
 icon: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Nginx_logo.svg/500px-Nginx_logo.svg.png
 keywords:
@@ -10,7 +10,9 @@ keywords:
 kubeVersion: '>=1.10.0-0'
 maintainers:
 - name: ChiefAlexander
-name: ingress-nginx
+- email: Trevor.G.Wood@gmail.com
+  name: taharah
+name: nginx-ingress
 sources:
 - https://github.com/kubernetes/ingress-nginx
-version: 2.1.0
+version: 1.27.1

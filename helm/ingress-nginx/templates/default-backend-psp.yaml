@@ -1,11 +1,13 @@
 {{- if and .Values.podSecurityPolicy.enabled .Values.defaultBackend.enabled -}}
-apiVersion: policy/v1beta1
+apiVersion: {{ template "podSecurityPolicy.apiVersion" . }}
 kind: PodSecurityPolicy
 metadata:
-  name: {{ include "ingress-nginx.fullname" . }}-backend
+  name: {{ template "nginx-ingress.fullname" . }}-backend
   labels:
-    {{- include "ingress-nginx.labels" . | nindent 4 }}
-    app.kubernetes.io/component: default-backend
+    app: {{ template "nginx-ingress.name" . }}
+    chart: {{ template "nginx-ingress.chart" . }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
 spec:
   allowPrivilegeEscalation: false
   fsGroup:
@@ -30,4 +32,4 @@ spec:
   - projected
   - secret
   - downwardAPI
-{{- end }}
+{{- end -}}
