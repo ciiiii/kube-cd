@@ -2,7 +2,7 @@ controller:
 
   image:
     repository: registry.cn-shanghai.aliyuncs.com/quay_mirror_image/kubernetes-ingress-controller.nginx-ingress-controller
-    tag: "0.26.1"
+    tag: "0.27.1"
     pullPolicy: IfNotPresent
     runAsUser: 101
     allowPrivilegeEscalation: true
