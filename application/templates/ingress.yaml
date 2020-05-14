@@ -12,6 +12,7 @@ spec:
 
   destination:
     server: {{ .Values.spec.destination.server }}
+    namespace: default
 
   syncPolicy:
     automated:
