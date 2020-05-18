@@ -16,9 +16,9 @@ spec:
         backend:
           serviceName: prometheus-operator-grafana
           servicePort: service
-    host: grafana.ciii.tech
+    host: grafana.local.ciii.tech
   tls:
   - secretName: grafana-tls
     hosts:
-      - grafana.ciii.tech
+      - grafana.local.ciii.tech
     

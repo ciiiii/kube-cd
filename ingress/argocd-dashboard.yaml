@@ -16,9 +16,9 @@ spec:
         backend:
           serviceName: argocd-server
           servicePort: http
-    host: argocd.ciii.tech
+    host: argocd.local.ciii.tech
   tls:
   - secretName: argocd-dashboard-tls
     hosts:
-      - argocd.ciii.tech
+      - argocd.local.ciii.tech
     
