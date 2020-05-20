@@ -12,11 +12,11 @@ serviceAccounts:
     name:
     annotations: {}
   nodeExporter:
-    create: true
+    create: false
     name:
     annotations: {}
   pushgateway:
-    create: true
+    create: false
     name:
     annotations: {}
   server:
@@ -384,7 +384,6 @@ server:
 pushgateway:
   enabled: false
 
-
 alertmanagerFiles:
   alertmanager.yml:
     global: {}
@@ -446,6 +445,10 @@ serverFiles:
           - targets:
             - kube-state-metrics:8080
 
+      - job_name: node-exporter
+        static_configs:
+          - targets:
+            - node-exporter:9100
       # A scrape configuration for running Prometheus on a Kubernetes cluster.
       # This uses separate scrape configs for cluster components (i.e. API server, node)
       # and services to allow each to use different authentication configs.
