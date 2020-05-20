@@ -54,7 +54,7 @@ service:
   annotations: {}
   labels: {}
 
-hostNetwork: true
+hostNetwork: false
 priorityClassName: ""
 
 resources:
