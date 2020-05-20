@@ -438,12 +438,12 @@ serverFiles:
       - job_name: 'argocd-application'
         static_configs:
           - targets:
-            - argocd-metrics:8082
+            - argocd-metrics.argocd:8082
       
       - job_name: 'argocd-server'
         static_configs:
           - targets:
-            - argocd-server-metrics:8083
+            - argocd-server-metrics.argocd:8083
 
       - job_name: 'prometheus'
         static_configs:
