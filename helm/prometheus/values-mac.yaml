@@ -435,16 +435,6 @@ serverFiles:
       - /etc/config/alerts
 
     scrape_configs:
-      - job_name: 'argocd-application'
-        static_configs:
-          - targets:
-            - argocd-metrics.argocd:8082
-      
-      - job_name: 'argocd-server'
-        static_configs:
-          - targets:
-            - argocd-server-metrics.argocd:8083
-
       - job_name: 'prometheus'
         static_configs:
           - targets:
@@ -715,24 +705,29 @@ serverFiles:
             action: replace
             target_label: kubernetes_pod_name
 
-# adds additional scrape configs to prometheus.yml
-# must be a string so you have to add a | after extraScrapeConfigs:
-# example adds prometheus-blackbox-exporter scrape config
-extraScrapeConfigs:
-  # - job_name: 'prometheus-blackbox-exporter'
-  #   metrics_path: /probe
-  #   params:
-  #     module: [http_2xx]
-  #   static_configs:
-  #     - targets:
-  #       - https://example.com
-  #   relabel_configs:
-  #     - source_labels: [__address__]
-  #       target_label: __param_target
-  #     - source_labels: [__param_target]
-  #       target_label: instance
-  #     - target_label: __address__
-  #       replacement: prometheus-blackbox-exporter:9115
+extraScrapeConfigs: |
+  - job_name: 'argocd-application'
+    static_configs:
+      - targets:
+        - argocd-metrics.argocd:8082
+      
+  - job_name: 'argocd-server'
+    static_configs:
+      - targets:
+        - argocd-server-metrics.argocd:8083
+  
+  - job_name: 'kubernetes-kubelet'
+    scheme: https
+    tls_config:
+      ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+      insecure_skip_verify: true
+    bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+    kubernetes_sd_configs:
+    - role: node
+    relabel_configs:
+    - action: lablemap
+      regex: __meta_kubernetes_node_label_(.+)
+
 
 # Adds option to add alert_relabel_configs to avoid duplicate alerts in alertmanager
 # useful in H/A prometheus with different external labels but the same alerts
