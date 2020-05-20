@@ -1,6 +1,6 @@
 global:
   labels: {}
-  
+
 rbac:
   create: true
   apiVersion: v1beta1
@@ -12,7 +12,7 @@ serviceAccount:
 image:
   registry: registry.cn-shanghai.aliyuncs.com
   repository: quay_mirror_image/prometheus.node-exporter
-  tag: 0.18.1
+  tag: v0.18.1
   pullPolicy: IfNotPresent
 
 extraArgs: {}
