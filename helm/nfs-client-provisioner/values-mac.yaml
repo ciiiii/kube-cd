@@ -13,6 +13,7 @@ storageClass:
   create: true
   name: nfs
   reclaimPolicy: Delete
+  default: true
 
 rbac:
   create: true
