@@ -1,0 +1,69 @@
+global:
+  labels: {}
+  
+rbac:
+  create: true
+  apiVersion: v1beta1
+  pspEnabled: true
+
+serviceAccount:
+  create: true
+
+image:
+  registry: registry.cn-shanghai.aliyuncs.com
+  repository: quay_mirror_image/prometheus.node-exporter
+  tag: 0.18.1
+  pullPolicy: IfNotPresent
+
+extraArgs: {}
+extraVolumes: []
+extraVolumeMounts: []
+
+securityContext:
+  enabled: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+service:
+  type: ClusterIP
+  targetPort: 9100
+  port: 9100
+  addPrometheusScrapeAnnotation: true
+  annotations: {}
+  labels: {}
+
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxUnavailable: 1
+
+hostNetwork: true
+minReadySeconds: 0
+priorityClassName: ""
+
+resources:
+  limits: {}
+  requests: {}
+  
+podLabels: {}
+podAnnotations: {}
+affinity: {}
+nodeSelector: {}
+tolerations: []
+
+livenessProbe:
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+serviceMonitor:
+  enabled: false
