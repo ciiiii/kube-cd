@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kube-metrics-server
+  name: kube-state-metrics
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
-    path: helm/kube-metrics-server
+    path: helm/kube-state-metrics
 
     helm:
       valueFiles:
