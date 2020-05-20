@@ -8,6 +8,7 @@ extraArgs:
   kubelet-preferred-address-types: "InternalIP"
   kubelet-insecure-tls: "true"
   metric-resolution: "60s"
+  cert-dir: "/tmp"
 
 resources:
   limits: {}
