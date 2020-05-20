@@ -49,7 +49,9 @@ podLabels: {}
 podAnnotations: {}
 affinity: {}
 nodeSelector: {}
-tolerations: []
+tolerations: 
+- effect: NoSchedule
+  key: node-role.kubernetes.io/master
 
 livenessProbe:
   initialDelaySeconds: 120
