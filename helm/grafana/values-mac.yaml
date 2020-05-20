@@ -110,7 +110,8 @@ envFromSecret: ""
 envRenderSecret: {}
 extraSecretMounts: []
 extraVolumeMounts: []
-plugins: []
+plugins: 
+- grafana-kubernetes-app
 datasources: {}
 notifiers: {}
 dashboardProviders: {}
