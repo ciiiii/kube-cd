@@ -7,7 +7,7 @@ image:
 
 nfs:
   server: "192.168.0.1"
-  path: "/"
+  path: "/opt/data/k8s"
 
 storageClass:
   create: true
