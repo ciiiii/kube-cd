@@ -725,7 +725,7 @@ extraScrapeConfigs: |
     kubernetes_sd_configs:
     - role: node
     relabel_configs:
-    - action: lablemap
+    - action: labelmap
       regex: __meta_kubernetes_node_label_(.+)
 
 
