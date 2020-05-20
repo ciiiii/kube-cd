@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-metrics-server
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+    path: helm/kube-metrics-server
+
+    helm:
+      valueFiles:
+      - values-mac.yaml
+  
+  destination:
+    server: {{ .Values.spec.destination.server }}
+    namespace: monitoring
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
