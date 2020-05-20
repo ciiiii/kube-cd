@@ -256,6 +256,7 @@ server:
     existingClaim: ""
     mountPath: /data
     size: 1Gi
+    storageClass: "nfs"
     subPath: ""
 
   emptyDir:
