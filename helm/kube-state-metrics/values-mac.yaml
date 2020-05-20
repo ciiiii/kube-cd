@@ -1,0 +1,90 @@
+global:
+  labels: {}
+  
+rbac:
+  create: true
+  apiVersion: v1beta1
+  pspEnabled: true
+
+serviceAccount:
+  create: true
+
+image:
+  registry: registry.cn-shanghai.aliyuncs.com
+  repository: docker_mirror_image/bitnami.kube-state-metrics
+  tag: 1.9.6-debian-10-r0
+  pullPolicy: IfNotPresent
+
+extraArgs: {}
+
+collectors:
+  certificatesigningrequests: true
+  configmaps: true
+  cronjobs: true
+  daemonsets: true
+  deployments: true
+  endpoints: true
+  horizontalpodautoscalers: true
+  ingresses: true
+  jobs: true
+  limitranges: true
+  namespaces: true
+  nodes: true
+  persistentvolumeclaims: true
+  persistentvolumes: true
+  poddisruptionbudgets: true
+  pods: true
+  replicasets: true
+  replicationcontrollers: true
+  resourcequotas: true
+  secrets: true
+  services: true
+  statefulsets: true
+  storageclasses: true
+  verticalpodautoscalers: false
+
+securityContext:
+  enabled: true
+  runAsUser: 1001
+  fsGroup: 1001
+
+service:
+  type: ClusterIP
+  port: 8080
+  annotations: {}
+  labels: {}
+
+hostNetwork: true
+priorityClassName: ""
+
+resources:
+  limits: {}
+  requests: {}
+  
+replicaCount: 2
+podLabels: {}
+podAnnotations: {}
+updateStrategy: {}
+minReadySeconds: 0
+affinity: {}
+nodeSelector: {}
+tolerations: []
+
+livenessProbe:
+  enabled: true
+  initialDelaySeconds: 120
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+readinessProbe:
+  enabled: true
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 6
+  successThreshold: 1
+
+serviceMonitor:
+  enabled: false
